@@ -16,7 +16,7 @@ DEPENDS += " \
 	lapack \
 "
 
-RDEPENDS:${PN} += " \
+RDEPENDS_${PN} += " \
 	${PYTHON_PN}-numpy \
 	lapack \
 "
@@ -36,10 +36,10 @@ export NUMPY_INCLUDE_PATH = "${STAGING_DIR_TARGET}${libdir}/python${PYTHON_BASEV
 # executable, but OE sets it to include some flags as well. So we split
 # the existing LDSHARED variable into the base executable and flags, and
 # prepend the flags into LDFLAGS
-LDFLAGS:prepend := "${@" ".join(d.getVar('LDSHARED', True).split()[1:])} "
+LDFLAGS_prepend := "${@" ".join(d.getVar('LDSHARED', True).split()[1:])} "
 export LDSHARED := "${@d.getVar('LDSHARED', True).split()[0]}"
 
 # Tell Numpy to look in target sysroot site-packages directory for libraries
 LDFLAGS:append = " -L${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/lib"
 
-INSANE_SKIP:${PN} = "already-stripped"
+INSANE_SKIP_${PN} = "already-stripped"

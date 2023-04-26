@@ -1,1 +1,1 @@
-EXTRA_OECMAKE:append = " -DCBLAS=ON"
+EXTRA_OECMAKE_append = " -DCBLAS=ON"
